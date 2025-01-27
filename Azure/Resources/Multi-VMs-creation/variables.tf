@@ -1,0 +1,3 @@
+variable "vmcountnumber" {
+    type = number
+}
