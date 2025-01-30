@@ -31,3 +31,21 @@ output "vm_size_details" {
 output "public_ip_vm" {
   value = module.rg.public_ip_vm
 }
+output "destination_port_details" {
+  value = module.rg.destination_port_details
+}
+# output "source_port_details" {
+#   value = module.rg.source_port_details
+# }
+output "nsg_rule_priority_details" {
+  value = module.rg.nsg_rule_priority_details
+}
+output "nsg_rule_name_details" {
+  value = module.rg.nsg_rule_name_details
+}
+output "direction_nsg_details" {
+  value = module.rg.direction_nsg_details
+}
+output "ngs_rule_define_details" {
+  value = module.rg.ngs_rule_define_details
+}
