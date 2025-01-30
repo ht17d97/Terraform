@@ -40,24 +40,27 @@ resource "azurerm_network_security_group" "example" {
   resource_group_name = var.rg_name
 
   security_rule {
-    name                       = "test123"
-    priority                   = 4045
-    direction                  = "Inbound"
-    access                     = "Allow"
+    name                       = var.nsg_rule_name
+    priority                   = var.nsg_rule_priority
+    direction                  = var.direction_nsg
+    access                     = var.ngs_rule_define
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_ranges    = ["22", "80", "443", "8080", "8081", "8082"]
+    destination_port_ranges    = var.destination_ports
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+  depends_on = [azurerm_resource_group.example]
 }
 
 resource "azurerm_public_ip" "example" {
   name                = "${var.public_ip_vm}-${count.index + 1}"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
+  resource_group_name = var.rg_name
+  location            = var.rg_location
   allocation_method   = "Static"
   count               = var.vmcountnumber
+
+  depends_on = [azurerm_resource_group.example]
 }
 
 resource "azurerm_linux_virtual_machine" "example" {
