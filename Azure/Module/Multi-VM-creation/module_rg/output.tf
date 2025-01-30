@@ -34,3 +34,21 @@ output "vm_size_details" {
 output "public_ip_vm" {
   value      = [for ip in azurerm_public_ip.example : ip.name]
 }
+output "destination_port_details" {
+  value = [for rule in azurerm_network_security_group.example.security_rule : rule.destination_port_ranges]
+}
+# output "source_port_details" {
+#   value      = resource.azurerm_network_security_group.example.security_rule.source_port_range
+# }
+output "nsg_rule_priority_details" {
+  value      = [for rule in azurerm_network_security_group.example.security_rule : rule.priority]
+}
+output "nsg_rule_name_details" {
+  value      = [for rule in azurerm_network_security_group.example.security_rule : rule.name]
+}
+output "direction_nsg_details" {
+  value      = [for rule in azurerm_network_security_group.example.security_rule : rule.direction]
+}
+output "ngs_rule_define_details" {
+  value      = [for rule in azurerm_network_security_group.example.security_rule : rule.access]
+}
