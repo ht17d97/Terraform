@@ -34,3 +34,21 @@ variable "vmcountnumber" {
 variable "public_ip_vm" {
   type        = string
 }
+variable "nsg_rule_priority" {
+  type        = number
+}
+variable "destination_ports" {
+  type        = list(any)
+}
+# variable "source_ports" {
+#   type        = list(any)
+# }
+variable "nsg_rule_name" {
+  type        = string
+}
+variable "direction_nsg" {
+  type        = string
+}
+variable "ngs_rule_define" {
+  type        = string
+}
